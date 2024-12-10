@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://clkyaoe5cachx"]
+
+[ext_resource type="Script" path="res://codes/ronaldo_macedonha.gd" id="1_kq4dy"]
+[ext_resource type="Texture2D" uid="uid://c38vm605y4h17" path="res://icon.svg" id="1_t4xej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnl5s"]
+size = Vector2(124, 127)
+
+[node name="Ronaldo macedonha" type="CharacterBody2D"]
+script = ExtResource("1_kq4dy")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_t4xej")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_pnl5s")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://f587an586k08"]
+
+[ext_resource type="Script" path="res://cenas/palco.gd" id="1_4kw43"]
+[ext_resource type="Texture2D" uid="uid://c1l35atk1nydy" path="res://assests/palcohahahahaha1.png" id="2_3f138"]
+[ext_resource type="PackedScene" uid="uid://cvcb8cey23yts" path="res://dialogue_manager_pirata.tscn" id="3_8kju0"]
+
+[sub_resource type="Animation" id="Animation_p07dv"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_7dia5"]
+resource_name = "fadein"
+length = 3.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4t7lb"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vnvp"]
+_data = {
+"RESET": SubResource("Animation_p07dv"),
+"fadein": SubResource("Animation_7dia5"),
+"fadeout": SubResource("Animation_4t7lb")
+}
+
+[node name="Palco" type="Node2D"]
+script = ExtResource("1_4kw43")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+offset_left = -13.0
+offset_top = 2.00002
+offset_right = 1987.0
+offset_bottom = 1502.0
+scale = Vector2(0.322667, 0.322667)
+texture = ExtResource("2_3f138")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 99
+offset_left = -15.0
+offset_top = -7.0
+offset_right = 649.0
+offset_bottom = 522.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1vnvp")
+}
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_8kju0")]
